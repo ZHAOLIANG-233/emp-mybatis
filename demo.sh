@@ -40,8 +40,8 @@ if mysqladmin --protocol=TCP -h 127.0.0.1 -P ${DB_PORT} -u root -p${DB_PASS} pin
     ok "MySQL 已在运行（127.0.0.1:${DB_PORT}）"
 else
     warn "MySQL 没在跑，正在启动..."
-    if [ -f scripts/start-lab-mysql.sh ]; then
-        bash scripts/start-lab-mysql.sh >/dev/null 2>&1
+    if [ -f scripts/start-mysql.sh ]; then
+        bash scripts/start-mysql.sh >/dev/null 2>&1
     fi
     if mysqladmin --protocol=TCP -h 127.0.0.1 -P ${DB_PORT} -u root -p${DB_PASS} ping >/dev/null 2>&1; then
         ok "MySQL 启动成功"
