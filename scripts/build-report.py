@@ -27,26 +27,26 @@ from docx.shared import Cm, Pt, RGBColor
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # 提交记录：生成报告时从当前仓库的 git log 读取，保证与仓库实际历史一致
-COMMITS = [
-    ("2026-10-11 09:30", "b0d2537", "chore: 初始化 emp-mybatis 工程（.gitignore / .gitattributes / Maven Wrapper）"),
-    ("2026-10-11 09:40", "42b00b4", "docs: 补 README 与协作说明"),
-    ("2026-10-11 10:05", "a0a045f", "build(pom): 单模块 pom，统一管理 MyBatis / MyBatis-Plus / MySQL 驱动版本"),
-    ("2026-10-11 10:40", "0d9d1f7", "feat(sql): 新增 emp / sys_dept 建表脚本与种子数据"),
-    ("2026-10-11 14:20", "e76193e", "feat(common): 新增实体、DTO、工具类与异常体系"),
-    ("2026-10-11 18:10", "17141c0", "feat(mybatis): 手工装配 SqlSessionFactory，配置只保留占位符"),
-    ("2026-10-11 20:15", "248b23e", "feat(mapper): 新增 XML 与注解两条 Mapper 轨及映射文件"),
-    ("2026-10-12 11:35", "2aecad3", "feat(service): 新增 EmpService，事务边界交给会话模板"),
-    ("2026-10-12 14:25", "5a61dd8", "feat(plus): 手工装配 MybatisConfiguration 与 MyBatis-Plus 拦截器"),
-    ("2026-10-12 17:40", "bbdef3c", "feat(plugin): 新增慢 SQL 拦截器与日志配置"),
-    ("2026-10-12 20:30", "31cfe8d", "feat(app): 新增可运行入口 LabApplication，串起两个表的完整演示"),
-    ("2026-10-12 21:10", "bdad329", "test: 新增 15 个测试类共 116 个用例"),
-    ("2026-10-12 22:30", "2327115", "docs: 补充 AI 代码甄别记录"),
-    ("2026-10-12 23:20", "4871d09", "docs: 新增答辩演示脚本、演示手册与 IDEA 运行配置"),
-    ("2026-10-12 23:30", "19358f3", "docs: 新增答辩速查卡"),
-    ("2026-10-12 23:35", "574ad0c", "docs: 修正手册中的仓库地址"),
-    ("2026-10-12 23:40", "db039f0", "chore(scripts): 新增工程自带的 MySQL 启停脚本，数据目录随工程走"),
-    ("2026-10-12 23:50", "60afaa1", "docs: 报告改为单模块描述，新增附录 B 提交记录"),
-]
+def _load_commits():
+    """运行时从当前仓库的 git log 读取提交记录，保证报告与仓库历史完全一致。"""
+    import subprocess
+    try:
+        out = subprocess.check_output(
+            ["git", "log", "--reverse", "--pretty=format:%ad|%h|%s", "--date=format:%Y-%m-%d %H:%M"],
+            cwd=ROOT, text=True, stderr=subprocess.DEVNULL)
+    except Exception:
+        return []
+    rows = []
+    for line in out.strip().split("\n"):
+        if not line.strip():
+            continue
+        parts = line.split("|", 2)
+        if len(parts) == 3:
+            rows.append(tuple(parts))
+    return rows
+
+
+COMMITS = _load_commits()
 FIGS = os.path.join(ROOT, "_report", "figs")
 
 HEI = "黑体"
@@ -1188,7 +1188,7 @@ def build():
               "便于按时间回溯。共 %d 次提交，覆盖 %d 个日期。" % (len(COMMITS), len({c[0][:10] for c in COMMITS})))
     table(doc,
           ["序号", "提交时间", "Commit", "提交内容"],
-          [[str(i), c[0], c[2], c[3]] for i, c in enumerate(COMMITS, 1)],
+          [[str(i), c[0], c[1], c[2]] for i, c in enumerate(COMMITS, 1)],
           widths=(1.2, 3.4, 1.8, 10.4), size=8.5, align_center_cols=[0, 1, 2])
 
     body(doc, "提交时间跨度：%s 至 %s。" % (COMMITS[0][0], COMMITS[-1][0]), size=9.5)
