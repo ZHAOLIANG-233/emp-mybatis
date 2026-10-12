@@ -1,7 +1,0 @@
-$ mvn test -Dtest=DeptStatAndNPlusOneTest
-
-[N+1] 对照：嵌套=7 条，JOIN=1 条
-[N+1] 逐部门查询 SQL 条数 = 7
-[N+1] 计数插件已摘除：true，剩余拦截器数=1
-[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.394 s -- in com.lab.mapper.DeptStatAndNPlusOneTest
-[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
