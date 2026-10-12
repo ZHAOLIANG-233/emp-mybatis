@@ -1,0 +1,5 @@
+$ mvn test -Dtest=SqlInjectionRegressionTest
+
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.431 s -- in com.lab.mapper.SqlInjectionRegressionTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS

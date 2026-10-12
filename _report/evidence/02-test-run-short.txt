@@ -1,0 +1,22 @@
+$ mvn test
+[INFO] Building lab-common 1.0.0-SNAPSHOT                                 [2/5]
+[INFO] Building lab-mybatis 1.0.0-SNAPSHOT                                [3/5]
+[INFO] Building lab-mybatis-plus 1.0.0-SNAPSHOT                           [4/5]
+[INFO] Building lab-bootstrap 1.0.0-SNAPSHOT                              [5/5]
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 s -- in com.lab.util.SensitiveDataMaskingTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.206 s -- in com.lab.config.ConnectionSmokeTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in com.lab.config.NoSpringDependencyTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in com.lab.config.SlowSqlInterceptorTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.053 s -- in com.lab.config.DependencyMatrixTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.055 s -- in com.lab.config.MyBatisSessionTemplateTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.022 s -- in com.lab.security.SecurityScanTest
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.135 s -- in com.lab.mapper.PlusMapperTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 s -- in com.lab.mapper.SqlInjectionRegressionTest
+[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.038 s -- in com.lab.mapper.DynamicSqlTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in com.lab.mapper.ThreeTrackConsistencyTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.020 s -- in com.lab.mapper.PaginationTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in com.lab.mapper.EmpMapperTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 s -- in com.lab.mapper.DeptStatAndNPlusOneTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s -- in com.lab.service.EmpServiceTest
+[INFO] Tests run: 116, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS

@@ -1,0 +1,21 @@
+$ git log --pretty="%h  %ad  %s" --date=format:"%Y-%m-%d %H:%M"
+
+675540f  2026-10-11 09:20  chore: 初始化 mybit.lab 工程骨架（.gitignore/.editorconfig）
+52edef2  2026-10-11 09:52  build(pom): 建立聚合父工程与四个子模块，统一 dependencyManagement
+662a6df  2026-10-11 10:35  feat(sql): 新增 emp/sys_dept 建表脚本，status 与 del_flag 语义分离
+a682a72  2026-10-11 11:05  feat(sql): 新增种子数据（6 部门 / 16 员工，覆盖空值与逻辑删除边界）
+195c3eb  2026-10-11 11:30  feat(sql): 新增基线复核脚本，固化 16/15/1/12/3 五个口径
+ac8e764  2026-10-11 13:40  feat(common): 新增 ErrorCode 与业务/校验异常，统一错误语义
+1624618  2026-10-11 14:20  feat(entity): 新增 Emp/SysDept 实体，显式保留无参构造以适配 MyBatis 反射
+86eb7b5  2026-10-11 15:40  feat(dto): 新增 EmpQuery/PageQuery/PageResult/DeptStatVO 查询与分页载体
+f370b5d  2026-10-11 16:25  feat(common): 新增参数校验器与敏感数据掩码工具
+a3317c7  2026-10-11 17:30  feat(config): DbConfig 四级优先级解析连接参数，口令缺失直接快速失败
+
+  ......
+
+509d694  2026-10-12 18:25  test(plugin): 新增慢 SQL 拦截器测试，用动态代理替身验证命中判定
+7cb7e0b  2026-10-12 19:10  test(mapper): 新增 N+1 对照测试，把 SQL 条数量化为 7 条 vs 1 条
+3c86974  2026-10-12 19:50  test(mapper): 新增三轨一致性测试，并把逻辑删除口径差异固定下来
+d8c1dc7  2026-10-12 20:30  test(mapper): 新增 SQL 注入回归测试，把 #{} 的约束固定成用例
+60d3a41  2026-10-12 21:10  test(security): 新增凭据扫描与掩码测试，校验 .gitignore 规则有效
+1c62ccf  2026-10-12 21:50  chore(scripts): 新增实验室数据库启动、一键测试与离线兜底脚本
